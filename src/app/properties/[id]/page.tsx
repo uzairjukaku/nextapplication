@@ -6,7 +6,12 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { properties } from "@/lib/data";
 import React from "react";
 
-export default function PropertyDetail({ params }: any) {
+
+export default  async function PropertyDetail({
+    params,
+  }: {
+    params: Promise<{ id: string }>
+  }) {
   const { id } = React.use(params);
   const property = properties.find((prop) => prop.id.toString() === id);
   if (!property) notFound();
