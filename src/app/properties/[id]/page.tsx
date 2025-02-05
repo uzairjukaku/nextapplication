@@ -4,17 +4,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { properties } from "@/lib/data";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import React from "react";
 
-export default function PropertyDetail({ params }: { params: { id: string } }) {
-  const property = properties.find((prop) => prop.id.toString() === params.id);
-
+export default function PropertyDetail({ params }: any) {
+  const { id } = React.use(params);
+  const property = properties.find((prop) => prop.id.toString() === id);
   if (!property) notFound();
 
   return (
@@ -26,8 +20,8 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
       <Card>
         <CardContent className="p-4">
           <Image
-            src={property?.image}
-            alt={`${property.address}`}
+            src={property.image}
+            alt={property.address}
             width={800}
             height={600}
             className="w-full h-96 object-cover rounded-t-lg"
@@ -55,7 +49,7 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
                   {new Date(property.addedAt).toLocaleDateString()}
                 </p>
                 <p className="text-xl font-medium">
-                  <strong>Location:</strong> {property?.address}
+                  <strong>Location:</strong> {property.address}
                 </p>
               </div>
             </div>
@@ -63,7 +57,7 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
 
           <div className="mt-6">
             <h3 className="text-2xl font-semibold">Description</h3>
-            <p className="text-lg mt-2">{property?.description}</p>
+            <p className="text-lg mt-2">{property.description}</p>
           </div>
         </CardContent>
       </Card>
