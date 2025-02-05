@@ -38,7 +38,7 @@ export default async function PropertyDetail({
             <CardTitle className="text-3xl font-semibold">
               {property.address}
             </CardTitle>
-            <div className="grid grid-cols-2 gap-6 mt-4">
+            <div className="grid grid-cols-1  md:grid-cols-2 gap-6 mt-4">
               <div>
                 <p className="text-xl font-medium">
                   <strong>Size:</strong> {property.size} sqft
