@@ -7,12 +7,14 @@ import { properties } from "@/lib/data";
 import React from "react";
 
 
-export default  async function PropertyDetail({
+export default async function PropertyDetail({
     params,
   }: {
     params: Promise<{ id: string }>
   }) {
-  const { id } = React.use(params);
+
+    const id = (await params).id
+ 
   const property = properties.find((prop) => prop.id.toString() === id);
   if (!property) notFound();
 
